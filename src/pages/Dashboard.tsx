@@ -19,8 +19,8 @@ export default function Dashboard() {
       <div className="dashboard-content">
         <header className="dashboard-header">
           <div className="dashboard-title-group">
-            <h1>منصة التخطيط التسويقي الذكي</h1>
-            <p className="dashboard-subtitle">ابدأ بتصفح خطط تسويق احترافية لـ Purity و Prevost وعرضها بأسلوب تفاعلي جذاب.</p>
+            <h1>منصة التخطيط التسويقي - أحذية سهام</h1>
+            <p className="dashboard-subtitle">استكشف خطط تسويق وتوزيع الجملة (B2B) لورشة سهام للأحذية النسائية في أسواق الأردن والعراق.</p>
           </div>
           {isDeveloperMode && (
             <Button onClick={handleCreate} size="lg" className="dashboard-create-btn">
@@ -44,18 +44,18 @@ export default function Dashboard() {
         ) : (
           <div className="dashboard-grid">
             {plans.map((plan) => {
-              const isPurity = plan.id === 'purity-cleaning-plan';
-              const description = isPurity
-                ? 'خطة تسويق رقمي متكاملة لتأسيس العلامة التجارية، والانتشار في مجمعات دبي السكنية، وإطلاق نظام الاشتراكات المجدولة وتطوير تطبيق الجوال.'
-                : 'خطة عمل سنوية لإطلاق وتأسيس التوزيع الحصري لمنتجات Prevost الفرنسية بالخليج عبر قنوات B2B، وبناء شبكات الهواء PPS للورش والمصانع الكبرى، وإدارة التخزين الذكي FBA.';
+              const isJordan = plan.id === 'seham-jordan-plan';
+              const description = isJordan
+                ? 'خطة تسويق جملة وتوريد B2B لورشة أحذية سهام النسائية بسوق الأردن، تركز على محلات التجزئة والبوتيكات وعقد صفقات التوريد الدورية بمرونة عالية.'
+                : 'خطة عمل تسويق وتوزيع جملة B2B لأسواق العراق، تركز على كبار الموزعين وأصحاب المستودعات الكبرى في الشورجة وأربيل وتوريد كميات تجارية واسعة.';
               
               return (
-                <div key={plan.id} className={`dashboard-plan-card-premium ${isPurity ? 'purity-theme' : 'prevost-theme'}`}>
+                <div key={plan.id} className={`dashboard-plan-card-premium ${isJordan ? 'purity-theme' : 'prevost-theme'}`}>
                   <div className="card-premium-glow"></div>
                   
                   <div className="premium-card-header">
                     <div className="premium-card-badge">
-                      {isPurity ? 'خدمات تنظيف • دبي' : 'توزيع حصري • B2B'}
+                      {isJordan ? 'سوق الأردن • B2B جملة' : 'سوق العراق • B2B جملة'}
                     </div>
                     <h3 className="premium-card-title">{plan.title}</h3>
                     <p className="premium-card-desc">{description}</p>
@@ -64,7 +64,7 @@ export default function Dashboard() {
                   {/* External & Control Links Panel */}
                   {plan.projectLinks && (
                     <div className="dashboard-links-panel">
-                      <h4 className="links-panel-title">روابط التحكم والمراقبة السريعة:</h4>
+                      <h4 className="links-panel-title">روابط التحكم والمراقبة السريعة (B2B):</h4>
                       <div className="links-buttons-grid">
                         <a 
                           href={plan.projectLinks.websiteUrl} 
@@ -72,8 +72,8 @@ export default function Dashboard() {
                           rel="noopener noreferrer"
                           className="premium-link-btn website-link"
                         >
-                          {isPurity ? <Globe className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
-                          <span>{isPurity ? 'زيارة موقع بيوريتي' : 'زيارة متجر أمازون'}</span>
+                          <ShoppingBag className="w-4 h-4" />
+                          <span>{isJordan ? 'كتالوج واتساب الأردن' : 'كتالوج واتساب العراق'}</span>
                           <ExternalLink className="w-3.5 h-3.5 opacity-50 shrink-0" />
                         </a>
 
@@ -84,7 +84,7 @@ export default function Dashboard() {
                           className="premium-link-btn control-link"
                         >
                           <Activity className="w-4 h-4" />
-                          <span>{isPurity ? 'حملات Google Ads' : 'لوحة Seller Central'}</span>
+                          <span>لوحة إعلانات Meta Ads</span>
                           <ExternalLink className="w-3.5 h-3.5 opacity-50 shrink-0" />
                         </a>
 
@@ -96,7 +96,7 @@ export default function Dashboard() {
                             className="premium-link-btn sheet-link"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-emerald-600"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                            <span>سجل المنتجات والمخزون</span>
+                            <span>سجل طلبات الجملة والتجربة</span>
                             <ExternalLink className="w-3.5 h-3.5 opacity-50 shrink-0" />
                           </a>
                         )}
